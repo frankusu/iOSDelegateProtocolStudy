@@ -1,5 +1,5 @@
 //
-//  ChooseSideController.swift
+//  SideSelectorController.swift
 //  OnepieceDelegate
 //
 //  Created by Frank Su on 2020-02-23.
