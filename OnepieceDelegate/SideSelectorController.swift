@@ -44,17 +44,17 @@ class SideSelectorController : UIViewController {
     }()
     
     @objc private func marineDidTap() {
-//        selectorDelegate.didChooseSide(image: #imageLiteral(resourceName: "garp"), name: "Monkey D. Garp")
+        selectorDelegate.didChooseSide(image: #imageLiteral(resourceName: "garp"), name: "Monkey D. Garp")
         //To demonstrate Notification and Observers
-        let name = Notification.Name(marineNotificationKey)
-        NotificationCenter.default.post(name: name, object: nil)
+//        let name = Notification.Name(marineNotificationKey)
+//        NotificationCenter.default.post(name: name, object: nil)
         dismiss(animated: true, completion: nil)
     }
     @objc private func pirateDidTap() {
-//        selectorDelegate.didChooseSide(image: #imageLiteral(resourceName: "luffy"), name: "Monkey D. Luffy")
+        selectorDelegate.didChooseSide(image: #imageLiteral(resourceName: "luffy"), name: "Monkey D. Luffy")
         //To demonstrate Notification and Observers
-        let name = Notification.Name(pirateNotificationKey)
-        NotificationCenter.default.post(name: name, object: nil)
+//        let name = Notification.Name(pirateNotificationKey)
+//        NotificationCenter.default.post(name: name, object: nil)
         dismiss(animated: true, completion: nil)
     }
     
