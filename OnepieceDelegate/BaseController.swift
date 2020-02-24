@@ -7,8 +7,13 @@
 //
 
 import UIKit
+let marineNotificationKey = "com.frankusu.marine"
+let pirateNotificationKey = "com.frankusu.pirate"
 
 class BaseController: UIViewController {
+    //Demonstrate Notification/Observer comminucation pattern
+    let marine = Notification.Name(rawValue: marineNotificationKey)
+    let pirate = Notification.Name(rawValue: pirateNotificationKey)
     
     let logo : UIImageView = {
         let image = UIImageView()
@@ -51,6 +56,9 @@ class BaseController: UIViewController {
         view.addSubview(nameLabel)
         view.addSubview(button)
         
+        //Comment this out to use delegate/protocol method. Uncomment delegate calls in SideSelectorController
+        createObservers()
+        
         NSLayoutConstraint.activate([
             logo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             logo.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -62,6 +70,29 @@ class BaseController: UIViewController {
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80)
         ])
+    }
+    //MARK: Observers
+    //Redundent way to demonstrate one to many communication pattern
+    func createObservers() {
+        //marine
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterImage), name: marine, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterName), name: marine, object: nil)
+        //pirate
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterImage), name: pirate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCharacterName), name: pirate, object: nil)
+    }
+    
+    @objc func updateCharacterImage(notification : NSNotification) {
+        let isMarine = notification.name == marine
+        let character = isMarine ? #imageLiteral(resourceName: "garp") : #imageLiteral(resourceName: "luffy")
+        logo.image = character
+    }
+    
+    @objc func updateCharacterName(notification : NSNotification) {
+        let isMarine = notification.name == marine
+        let charName = isMarine ? "Garp the Legend" : "Lucy"
+        nameLabel.text = charName
+        
     }
 }
 
