@@ -66,7 +66,7 @@ class BaseController: UIViewController {
             logo.heightAnchor.constraint(equalToConstant: 300),
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nameLabel.topAnchor.constraint(equalTo: logo.bottomAnchor,constant: 40),
-            button.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 250),
+            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
             button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
             button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80)
         ])
